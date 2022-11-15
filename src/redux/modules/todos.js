@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { notInitialized } from 'react-redux/es/utils/useSyncExternalStore';
 
 export const __getTodos = createAsyncThunk(
   "todos/getTodos",
@@ -25,7 +24,6 @@ export const __postTodos = createAsyncThunk(
 }
   }
 );
-
 export const __deleteTodos = createAsyncThunk(
   "todos/deleteTodos",
   async (id, thunkAPI) => {
@@ -69,7 +67,7 @@ export const todosSlice = createSlice({
       state.todos = state.todos.filter((todo)=>todo.title === action.payload)
     }
   },
-  extraReducers: { 
+  extraReducers: {
   [__getTodos.pending]: (state) => {
     state.isLoading = true; 
   },
